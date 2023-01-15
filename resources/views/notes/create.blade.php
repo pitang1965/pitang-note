@@ -10,8 +10,8 @@
       <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg">
         <form action="{{ route('notes.store')}}" method="post">
           @csrf
-          <x-text-input type="text" name="title" placeholder="件名" class="w-full" autocomplete="off"></x-text-input>
-          <x-textarea name="text" rows="10" placeholder="入力してください。" class="w-full mt-6"></x-textarea>
+          <x-text-input type="text" name="title" field="title" placeholder="件名" class="w-full" autocomplete="off" :value="@old('title')"></x-text-input>
+          <x-textarea name="text" field="text" rows="10" placeholder="入力してください。" class="w-full mt-6" :value="@old('text')"></x-textarea>
           <x-button class="mt-6">メモを保存</x-button>
         </form>
       </div>
