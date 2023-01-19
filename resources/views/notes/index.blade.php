@@ -11,7 +11,7 @@
       @forelse ($notes as $note)
       <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg mt-6">
         <h2 class="font-bold text-2xl">
-          <a href="{{ route('notes.show', $note->uuid) }} ">{{ $note->title }}</a>
+          <a href="{{ route('notes.show', $note) }} ">{{ $note->title }}</a>
         </h2>
         <p class="mt-2">
           {{ Str::limit($note->text, 200) }}
