@@ -122,6 +122,6 @@ class NoteController extends Controller
 
         $note->delete();
 
-        return to_route('notes.index')->with('success', 'メモが削除されました。');
+        return to_route('notes.index')->with('success', 'メモをゴミ箱に移動しました。');
     }
 }
