@@ -1,7 +1,7 @@
 <x-app-layout>
   <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-      {{ __('Notes') }}
+      {{ request()->routeIs('notes.index') ? __('メモ一覧') : __('ゴミ箱') }}
     </h2>
   </x-slot>
 
@@ -10,19 +10,25 @@
       <x-alert-success>
         {{ session('success') }}
       </x-alert-success>
-      <a href="{{ route('notes.create') }}" class="btn-link btn-lg mb-2">+ メモを追加</a>
+      @if(request()->routeIs('notes.index'))
+        <a href="{{ route('notes.create') }}" class="btn-link btn-lg mb-2">+ メモを追加</a>
+      @endif
       @forelse ($notes as $note)
-      <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg mt-6">
-        <h2 class="font-bold text-2xl">
-          <a href="{{ route('notes.show', $note) }} ">{{ $note->title }}</a>
-        </h2>
-        <p class="mt-2">
-          {{ Str::limit($note->text, 200) }}
-        </p>
-        <span class="block mt-4 text-sm opacity-70">{{ $note->updated_at->diffForHumans()}}</span>
-      </div>
-      @empty
-      <p>メモがありません。</p>
+        <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg mt-6">
+          <h2 class="font-bold text-2xl">
+            <a href="{{ route('notes.show', $note) }} ">{{ $note->title }}</a>
+          </h2>
+          <p class="mt-2">
+            {{ Str::limit($note->text, 200) }}
+          </p>
+          <span class="block mt-4 text-sm opacity-70">{{ $note->updated_at->diffForHumans()}}</span>
+        </div>
+        @empty
+        @if(request()->routeIs('notes.index'))
+          <p>メモがありません。</p>
+        @else
+          <p>ゴミ箱にはメモはありません。</p>
+        @endif
       @endforelse
 
       {{ $notes->links() }}
