@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/trashed', [TrashedNoteController::class, 'index'])->name('trashed.index');
     Route::get('/trashed/{note}', [TrashedNoteController::class, 'show'])->withTrashed()->name('trashed.show');
+    Route::put('/trashed/{note}', [TrashedNoteController::class, 'update'])->withTrashed()->name('trashed.update');
 });
 
 require __DIR__.'/auth.php';

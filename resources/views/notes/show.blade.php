@@ -28,7 +28,11 @@
           <p class="opacity-70">
             <strong>削除日： </strong> {{ $note->deleted_at->diffForHumans() }}
           </p>
-          </p>
+          <form action="{{ route('trashed.update', $note) }}" method="post" class="ml-auto">
+            @method('put')
+            @csrf
+            <button type="submit" class="btn-link">元に戻す</button>
+          </form>
         @endif
       </div>
       <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg mt-6">
