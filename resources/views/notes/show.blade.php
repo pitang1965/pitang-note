@@ -25,7 +25,9 @@
             <button type="submit" class="btn btn-danger ml-4" onClick="return confirm('このメモをゴミ箱に移動しますか？')">ゴミ箱に移動</button>
           </form>
         @else
-          <strong>削除： </strong> {{ $note->deleted_at->diffForHumans() }}
+          <p class="opacity-70">
+            <strong>削除日： </strong> {{ $note->deleted_at->diffForHumans() }}
+          </p>
           </p>
         @endif
       </div>
