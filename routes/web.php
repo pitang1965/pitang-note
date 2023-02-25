@@ -30,7 +30,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('trashed', [TrashedNoteController::class, 'index'])->name('trashed.index');
+    Route::get('/trashed', [TrashedNoteController::class, 'index'])->name('trashed.index');
+    Route::get('/trashed/{note}', [TrashedNoteController::class, 'show'])->withTrashed()->name('trashed.show');
 });
 
 require __DIR__.'/auth.php';
