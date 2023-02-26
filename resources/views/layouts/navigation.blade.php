@@ -13,10 +13,10 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('notes.index')" :active="request()->routeIs('notes.index')">
-                        {{ __('メモ一覧') }}
+                        {{ __('Notes') }}
                     </x-nav-link>
                     <x-nav-link :href="route('trashed.index')" :active="request()->routeIs('trashed.index')">
-                        {{ __('ゴミ箱') }}
+                        {{ __('Trash Can') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -71,10 +71,10 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('notes.index')" :active="request()->routeIs('notes.index')">
-                {{ __('メモ一覧') }}
+                {{ __('Notes') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('trashed.index')" :active="request()->routeIs('trashed.index')">
-                {{ __('ゴミ箱') }}
+                {{ __('Trash') }}
             </x-responsive-nav-link>
         </div>
 
@@ -87,7 +87,7 @@
 
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('プロフィール') }}
+                    {{ __('Profile') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
@@ -97,7 +97,7 @@
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('ログアウト') }}
+                        {{ __('Log Out') }}
                     </x-responsive-nav-link>
                 </form>
             </div>

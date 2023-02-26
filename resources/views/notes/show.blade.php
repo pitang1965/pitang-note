@@ -1,7 +1,7 @@
 <x-app-layout>
   <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-      {{ !$note->trashed() ? __('メモ') : __('ゴミ') }}
+      {{ !$note->trashed() ? __('Note') : __('ゴミ') }}
     </h2>
   </x-slot>
 
@@ -22,7 +22,7 @@
           <form action="{{ route('notes.destroy', $note) }}" method="post">
             @method('delete')
             @csrf
-            <button type="submit" class="btn btn-danger ml-4" onClick="return confirm('このメモをゴミ箱に移動しますか？')">ゴミ箱に移動</button>
+            <button type="submit" class="btn btn-danger ml-4" onClick="return confirm('このメモをゴミ箱に移動しますか？')">{{__('Move to Trash')}}</button>
           </form>
         @else
           <p class="opacity-70">
@@ -31,13 +31,13 @@
           <form action="{{ route('trashed.update', $note) }}" method="post" class="ml-auto">
             @method('put')
             @csrf
-            <button type="submit" class="btn-link">元に戻す</button>
+            <button type="submit" class="btn-link">{{__('Restore Note')}}</button>
           </form>
 
           <form action="{{ route('trashed.destroy', $note) }}" method="post" class="ml-4">
             @method('delete')
             @csrf
-            <button type="submit" class="btn btn-danger" onClick="return confirm('このメモを完全に削除しますか？この処理は取り消せません。')">完全に削除</button>
+            <button type="submit" class="btn btn-danger" onClick="return confirm('このメモを完全に削除しますか？この処理は取り消せません。')">{{__('Delete Forever')}}</button>
           </form>
         @endif
       </div>

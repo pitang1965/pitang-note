@@ -1,7 +1,7 @@
 <x-app-layout>
   <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-      {{ request()->routeIs('notes.index') ? __('メモ一覧') : __('ゴミ箱') }}
+      {{ request()->routeIs('notes.index') ? __('Notes') : __('Trash Can') }}
     </h2>
   </x-slot>
 
@@ -11,7 +11,7 @@
         {{ session('success') }}
       </x-alert-success>
       @if(request()->routeIs('notes.index'))
-      <a href="{{ route('notes.create') }}" class="btn-link btn-lg mb-2">+ メモを追加</a>
+      <a href="{{ route('notes.create') }}" class="btn-link btn-lg mb-2">{{__('New Note')}}</a>
       @endif
       @forelse ($notes as $note)
       <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg mt-6">

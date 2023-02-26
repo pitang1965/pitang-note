@@ -1,7 +1,7 @@
 <x-app-layout>
   <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-      {{ __('メモを編集') }}
+      {{ __('Edit Note') }}
     </h2>
   </x-slot>
 
@@ -13,7 +13,7 @@
           @csrf
           <x-text-input type="text" name="title" field="title" placeholder="件名" class="w-full" autocomplete="off" :value="@old('title', $note->title)"></x-text-input>
           <x-textarea name="text" field="text" rows="10" placeholder="入力してください。" class="w-full mt-6" :value="@old('text', $note->text)"></x-textarea>
-          <x-button class="mt-6">メモを保存</x-button>
+          <x-button class="mt-6">{{ __('Edit Note') }}</x-button>
         </form>
       </div>
     </div>
