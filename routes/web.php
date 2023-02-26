@@ -26,13 +26,17 @@ Route::get('/dashboard', function () {
 
 Route::resource('/notes', NoteController::class)->middleware(['auth']);
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/trashed', [TrashedNoteController::class, 'index'])->name('trashed.index');
-    Route::get('/trashed/{note}', [TrashedNoteController::class, 'show'])->withTrashed()->name('trashed.show');
-    Route::put('/trashed/{note}', [TrashedNoteController::class, 'update'])->withTrashed()->name('trashed.update');
+Route::prefix('/profile')->name('profile.')->middleware('auth')->group(function () {
+    Route::get('/', [ProfileController::class, 'edit'])->name('edit');
+    Route::patch('/', [ProfileController::class, 'update'])->name('update');
+    Route::delete('/', [ProfileController::class, 'destroy'])->name('destroy');
+});
+
+Route::prefix('/trashed')->name('trashed.')->middleware('auth')->group(function () {
+    Route::get('/', [TrashedNoteController::class, 'index'])->name('index');
+    Route::get('/{note}', [TrashedNoteController::class, 'show'])->withTrashed()->name('show');
+    Route::put('/{note}', [TrashedNoteController::class, 'update'])->withTrashed()->name('update');
+    Route::delete('/{note}', [TrashedNoteController::class, 'destroy'])->withTrashed()->name('destroy');
 });
 
 require __DIR__.'/auth.php';

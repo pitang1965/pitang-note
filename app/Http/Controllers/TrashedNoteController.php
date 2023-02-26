@@ -29,4 +29,14 @@ class TrashedNoteController extends Controller
 
         return to_route('notes.show', $note)->with('success', 'メモがゴミ箱から戻りました。');
     }
+
+    public function destroy(Note $note) {
+        if(!$note->user->is(Auth::user())) {
+            return abort(403);
+        }
+
+        $note->forceDelete();
+
+        return to_route('trashed.index')->with('success', 'メモが完全に削除されました。');
+    }
 }

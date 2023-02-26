@@ -33,6 +33,12 @@
             @csrf
             <button type="submit" class="btn-link">元に戻す</button>
           </form>
+
+          <form action="{{ route('trashed.destroy', $note) }}" method="post" class="ml-4">
+            @method('delete')
+            @csrf
+            <button type="submit" class="btn btn-danger" onClick="return confirm('このメモを完全に削除しますか？この処理は取り消せません。')">完全に削除</button>
+          </form>
         @endif
       </div>
       <div class="my-6 p-6 bg-white border-b border-gray-200 shadow-sm sm:rounded-lg mt-6">
