@@ -1,4 +1,6 @@
 {
+    "Already registered?": "既に登録済の場合はこちら",
+    "Confirm Password": "パスワード（確認）",
     "Delete Forever": "完全に削除",
     "Edit Note": "メモを編集",
     "Email": "Eメール",
@@ -6,6 +8,7 @@
     "Log In": "ログイン",
     "Log Out": "ログアウト",
     "Move to Trash": "ゴミ箱に移動",
+    "Name": "名前",
     "New Note": "+ メモを追加",
     "Note": "メモ",
     "Notes": "メモ一覧",
