@@ -1,8 +1,11 @@
 {
     "Already registered?": "既に登録済の場合はこちら",
     "Confirm Password": "パスワード（確認）",
+    "Current Password": "現在のパスワード",
+    "Delete Account": "アカウントの削除",
     "Delete Forever": "完全に削除",
     "Edit Note": "メモを編集",
+    "Ensure your account is using a long, random password to stay secure.": "安全のため、長くて、ランダムなパスワードを設定してください。",
     "Email": "Eメール",
     "Forgot your password?": "パスワードを忘れた場合はこちら",
     "Log In": "ログイン",
@@ -10,14 +13,20 @@
     "Move to Trash": "ゴミ箱に移動",
     "Name": "名前",
     "New Note": "+ メモを追加",
+    "New Password": "新しいパスワード",
     "Note": "メモ",
     "Notes": "メモ一覧",
+    "Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.": "アカウントを削除すると、そのリソース及びデータはすべて永久に削除されます。アカウントを削除する前に、保持したいデータや情報をダウンロードしてください。",
     "Password":  "パスワード",
     "Profile": "プロフィール",
+    "Profile Information": "プロフィール情報",
     "Register": "登録",
     "Remember me": "パスワードを保存する",
     "Restore Note": "元に戻す",
+    "Save": "保存",
     "Save Note": "メモを保存",
     "Trash": "ゴミ",
-    "Trash Can": "ゴミ箱"
+    "Trash Can": "ゴミ箱",
+    "Update Password": "パスワードの更新",
+    "Update your account's profile information and email address.": "あなたのアカウントのプロフィール情報及びEメールアドレスを更新してください。"
 }
