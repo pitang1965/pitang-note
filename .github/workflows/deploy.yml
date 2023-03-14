@@ -1,16 +1,22 @@
-name: deploy to XServer
-
+name: Build and Deploy
 on:
   push:
-    branches:
-      - master
-
+    branches: [ main ]
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-        uses: actions/setup-node@v3
-      - run: npm install && npm build
-      - name: rsync deploy
-        run: rsync -auzrv -e "ssh -l pitang1965 -i ~/.ssh/pitang1965.key pitang1965.com -p 10022"
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: SSH and deploy
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SERVER_HOST }}
+        username: ${{ secrets.SERVER_USERNAME }}
+        key: ${{ secrets.SERVER_KEY }}
+        port: ${{ secrets.SERVER_PORT }}
+        script: |
+          cd pitang1965.com/public_html/pitang-note
+          git pull
+          npm install
+          npm run build
