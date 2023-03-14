@@ -1,0 +1,16 @@
+name: deploy to XServer
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        uses: actions/setup-node@v3
+      - run: npm install && npm build
+      - name: rsync deploy
+        run: rsync -auzrv -e "ssh -l pitang1965 -i ~/.ssh/pitang1965.key pitang1965.com -p 10022"
