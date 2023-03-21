@@ -19,7 +19,7 @@ jobs:
         chmod 600 private_key
     - name: login
       run: ssh -l pitang1965 -i private_key pitang1965.com -p 10022
-    - name: git pull
+    - name: rsync deploy
       run: |
         cd pitang1965.com/public_html/pitang-note
-        git pull
+        run: rsync -auzrv -e "ssh -i private_key -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -p 10022" --delete ./public/* pitang1965@pitang1965.com/public_html/pitang-note/ --exclude .htaccess
