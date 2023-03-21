@@ -17,6 +17,9 @@ jobs:
       run: |
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key
         chmod 600 private_key
-    - name: Deploy to Remote Server
+    - name: login
+      run: ssh -l pitang1965 -i private_key pitang1965.com -p 10022
+    - name: git pull
       run: |
-        ssh remote-server 'cd pitang1965.com/public_html/pitang-note && git pull'
+        cd pitang1965.com/public_html/pitang-note
+        git pull
