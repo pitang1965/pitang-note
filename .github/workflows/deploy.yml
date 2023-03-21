@@ -17,9 +17,6 @@ jobs:
       run: |
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > private_key
         chmod 600 private_key
-        echo "Host remote-server\n  HostName pitang1965.com\n  User pitang1965\n  Port 10022\n  IdentityFile $(pwd)/private_key\n  StrictHostKeyChecking=no" > ~/.ssh/config
-        ssh-keyscan -p 10022 pitang1965.com >> ~/.ssh/known_hosts
-
     - name: Deploy to Remote Server
       run: |
         ssh remote-server 'cd pitang1965.com/public_html/pitang-note && git pull'
